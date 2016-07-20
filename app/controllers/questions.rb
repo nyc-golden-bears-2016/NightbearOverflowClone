@@ -8,12 +8,12 @@ get '/questions/new' do
   erb :'questions/new'
 end
 
-post '/questions/new' do
+post '/questions' do
   halt(401, "Please login to ask questions.") unless login?
   question = Question.new(params[:question].merge(user: current_user))
   if question.save
     question.create_tags_and_associations(params[:tags])
-    erb :'questions/index'
+    redirect "/questions/#{question.id}"
   else
     @errors = question.errors.full_messages
     erb :'questions/new'
@@ -25,7 +25,7 @@ get '/questions/:id' do
   @comments = @question.comments
   @answers = @question.answers
   @tags = @question.tags
-  erb :'questions/show'
+  erb :'/questions/show'
 end
 
 get '/questions/:id/edit' do

@@ -1,4 +1,7 @@
-get '/answers/new' do
+get '/answers/:q_id/new' do
+  @question = Question.find(params[:q_id])
+  #This is here to make sure user can't go directly to answer
+  #question without associated question
   @errors = ["You will need to login in order to answer this question."] unless login?
   erb :'answers/new'
 end

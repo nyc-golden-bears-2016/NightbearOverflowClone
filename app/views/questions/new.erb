@@ -2,8 +2,7 @@
   <%=erb :_errors%>
 <%end%>
 
-<form action="/questions/new" method="post">
-  <input type="hidden" name="_method" value="put">
+<form action="/questions" method="post">
   <label>Title:</label>
   <input type="text" name="question[title]">
   <label>Question:</label>
