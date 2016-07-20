@@ -1,29 +1,33 @@
-get '/comments/new' do
-	erb :'comments/new'
+get '/comments/post' do
+  @post = Post.find(params[:post_id])
+  erb :'/comments/new'
 end
 
-post '/comments' do
-	@comment = Comment.new(params[:comment])
-	if @comment.save
-		@question = Comment.question
-		redirect "/questions/#{@question.id}"
-	else
-		@errors = @comment.errors.full_messages
-		erb :'comments/new'
-	end
+get '/comments/answer' do
+  @answer = Answer.find(params[:answer_id])
+  erb :'/comments/new'
 end
 
-get '/comments/:id/edit' do
-	@comment = Comment.find(params[:id])
-	erb :'comments/edit'
+
+post '/comments/post' do
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.new(content:params[:content],user_id:current_user.id)
+    if @comment.save
+      redirect "posts/#{@post.id}"
+    else
+      @errors = post.errors.full_messages
+      erb :'/comments/new'
+    end
 end
 
-put '/comments/:id' do
-	@comment = Comment.find(params[:id])
-	@comment.update(params[:comment])
+post '/comments/answer' do
 
-end
-
-delete '/comments/:id' do
-	redirect "/questions/#{}"
+    @answer = Answer.find(params[:answer_id])
+    @comment = @answer.comments.new(content:params[:content],user_id:current_user.id)
+    if @comment.save
+      redirect "posts/#{@answer.post_id}"
+    else
+      @errors = post.errors.full_messages
+      erb :'/comments/new'
+    end
 end

@@ -1,0 +1,26 @@
+<div class='content'>
+  <h1>Tags:</h1>
+  <% @tags.each do |tag| %>
+    <a class="tags" href="/tags/<%= tag.id %>"><%= tag.name %></a>
+  <% end %>
+</div>
+
+<div id="tag-form">
+  <form action="/tags" method="post">
+    <table>
+      <tr>
+        <td>Create new tag:</td>
+      </tr>
+      <tr>
+        <td><input type="text" name="tag[name]" style="width:100%;"></td>
+      </tr>
+      <tr>
+        <td>Description:</td>
+      </tr>
+      <tr>
+        <td><textarea name="tag[description]" rows="5" cols="50"></textarea>
+      </tr>
+    </table><br>
+    <input type="submit" name="Create Tag">
+  </form>
+</div>

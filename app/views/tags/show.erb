@@ -1,0 +1,16 @@
+<h1><%= @tag.name %></h1>
+<p id='tag-body'><%= @tag.description %><br>
+</p>
+
+<h4>Active Threads: </h4>
+<% if @questions %>
+  <% @questions.each do |question| %>
+    Subject: <a href='questions/<%= question.id %>'><%= question.title %></a>
+    Votes: <%= question.total_votes %>
+    Answers: <%= question.answers.length %>
+    Views: <%= question.views %>
+    Tags: <% question.tags.each do |tag| %>
+      <a href='tags/<%= tag.id %>'><%= tag.subject %></a>
+    <% end %>
+  <% end %>
+<% end %> 
