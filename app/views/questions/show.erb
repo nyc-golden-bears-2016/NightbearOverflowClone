@@ -1,0 +1,52 @@
+<div class="questions">
+
+  <div class="voting">
+    <span id="upvote">Upvote</span>
+    <span><%=@question.vote_total %></span>
+    <span id="downvote">Downvote</span>
+  </div>
+
+  <div class="question">
+  <div><%=@question.title%><br><span><a href="/users/<%=question.user.id%>"> by  <%=@question.user%></span></div><br>
+  <div><%=@question.body%></div>
+  <%if @question.edited_at != nil%>
+    <br><div>Edited:<%=@question.edited_at%></div>
+  <%else%>
+    <br><div>Created:<%=@question.created_at%></div>
+  <%end%>
+  </div>
+
+  <div class="comment">
+  <%@comments.each do |comment|%>
+      <div><%=comment.body%></div>
+      <div><%=comment.user%></div>
+      <%if comment.edited_at != nil%>
+        <br><div>Edited:<%=comment.edited_at%></div>
+      <%else%>
+        <br><div>Created:<%=comment.created_at%></div>
+      <%end%>
+    <%end%>
+  </div>
+
+  <div class="answer">
+  <%@answer.each do |answer|%>
+      <div><%=answer.body%></div>
+      <div><%=answer.user%></div>
+      <%if answer.edited_at != nil%>
+        <br><div>Edited:<%=answer.edited_at%></div>
+      <%else%>
+        <br><div>Created:<%=answer.created_at%></div>
+      <%end%>
+      <div class="comment">
+      <%answer.comments.each do |comment|%>
+          <div><%=comment.body%></div>
+          <div><%=comment.user%></div>
+          <%if comment.edited_at != nil%>
+            <br><div>Edited:<%=comment.edited_at%></div>
+          <%else%>
+            <br><div>Created:<%=comment.created_at%></div>
+          <%end%>
+        <%end%>
+      </div>
+    <%end%>
+  </div>

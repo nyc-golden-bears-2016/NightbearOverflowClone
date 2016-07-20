@@ -1,0 +1,35 @@
+<nav>
+  <label>NAVIGATION<label>
+  <%if login?%>
+    <a href= '/sessions/logout'>Log Out</a>
+    <a href='/users/show'>Your Account</a>
+  <%else%>
+    <a href= '/users/new'>Register</a>
+    <a href='/sessions/login'>Log In</a>
+  <%end%>
+</nav>
+
+<div class="container">
+  <h1>NIGHTBEAR OVERFLOW</h1>
+  <div><%@questions.each do |question| %>
+
+    <div class="voting">
+      <span id="upvote">Upvote</span>
+      <span><%=@question.vote_total %></span>
+      <span id="downvote">Downvote</span>
+    </div>
+
+    <div class="question">
+    <div><a href="/questions/<%=question.id%>"><%=question.title %></a></div><br>
+    <div><%=question.body %></div><br>
+    </div>
+
+    <div class="question-preview">
+      <span><a href="/users/<%=question.user.id%>">Author <%=question.user%></span> |
+      <span><%=question.answers.length%> answers</span> |
+      <span><%=question.comments.length%> comments</span>
+      </div>
+    </div>
+  <% end %>
+
+</div>
