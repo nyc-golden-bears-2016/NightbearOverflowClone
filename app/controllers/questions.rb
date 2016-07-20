@@ -12,6 +12,7 @@ post '/questions/new' do
   halt(401, "Please login to ask questions.") unless login?
   question = Question.new(params[:question].merge(user: current_user))
   if question.save
+    question.create_tags_and_associations(params[:tags])
     erb :'questions/index'
   else
     @errors = question.errors.full_messages
@@ -21,12 +22,16 @@ end
 
 get '/questions/:id' do
   @question = Question.find(params[:id])
+  @comments = @question.comments
+  @answers = @question.answers
+  @tags = @question.tags
   erb :'questions/show'
 end
 
 get '/questions/:id/edit' do
   @question = Question.find(params[:id])
   @user = @question.user
+  @tags = @question.tag_list
   halt(401, "You do not have permission to complete this action.") unless login? && current_user == @user
   erb :'questions/edit'
 end
@@ -37,6 +42,7 @@ put '/questions/:id' do
   halt(401, "You do not have permission to complete this action.") unless login? && current_user == @user
   @question.update_attributes(params[:question])
   if @question.save
+    @question.update_tags_and_associations(params[:tags])
     erb :"questions/#{@question.id}"
   else
     @errors = question.errors.full_messages

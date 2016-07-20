@@ -1,0 +1,15 @@
+<%if @errors %>
+  <%=erb :_errors%>
+<%end%>
+
+<form action="/answers/<%=@answer.id%>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label>Answer:</label>
+  <input type="text" name="answer[body]"><%=@answer.body%></input>
+  <input type="submit" value="Edit Answer"><br>
+</form>
+
+<form action="/answers/<%=@answer.id%>%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Post"><br>
+</form>

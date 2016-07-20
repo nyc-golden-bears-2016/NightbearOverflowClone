@@ -4,6 +4,7 @@ get '/answers/new' do
 end
 
 post '/answers/:q_id/new' do
+  @question = Question.find(params[:q_id])
   halt(401, "Please login to answer questions.") unless login?
   answer = Answer.new(params[:answer].merge(user: current_user, question_id: params[:q_id]))
   if answer.save

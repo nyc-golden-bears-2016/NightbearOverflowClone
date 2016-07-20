@@ -1,0 +1,19 @@
+<%if @errors %>
+  <%=erb :_errors%>
+<%end%>
+
+<form action="/questions/<%=@question.id%>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label>Title:</label>
+  <input type="text" name="question[title]"><%=@question.title%></input>
+  <label>Question:</label>
+  <input type="text" name="question[body]"><%=@question.body%></input>
+  <label>Add or Remove Tags:</label>
+  <input type="text" name="tags"><%=@tags%></input>
+  <input type="submit" value="Edit Post"><br>
+</form>
+
+<form action="/questions/<%=@question.id%>%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Post"><br>
+</form>

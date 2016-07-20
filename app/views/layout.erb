@@ -18,13 +18,6 @@
   <title></title>
 </head>
 <body>
-  <%if @errors %>
-    <label>ERROR:</label>
-    <%@errors.each do |error| %>
-      <strong><%=error%></strong><br>
-    <%end%>
-  <%end%>
-  <br>
   <%= yield %>
 </body>
 </html>

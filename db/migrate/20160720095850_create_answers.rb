@@ -6,6 +6,7 @@ class CreateAnswers < ActiveRecord::Migration
     t.references :question, null: false
     t.integer :total_votes, default: 0
     t.boolean :best_answer, default: false
+    t.datetime :edited_at
 
     t.timestamps( null: false )
     end

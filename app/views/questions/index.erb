@@ -11,20 +11,20 @@
 
 <div class="container">
   <h1>NIGHTBEAR OVERFLOW</h1>
-  <div class="questions"><%@questions.each do |question| %>
+  <div><%@questions.each do |question| %>
 
     <div class="voting">
-      <span>Upvote</span>
-      <span><%=question.vote_total %></span>
-      <span>Downvote</span>
+      <span id="upvote">Upvote</span>
+      <span><%=@question.vote_total %></span>
+      <span id="downvote">Downvote</span>
     </div>
 
-    <div class="question_main">
+    <div class="question">
     <div><a href="/questions/<%=question.id%>"><%=question.title %></a></div><br>
     <div><%=question.body %></div><br>
     </div>
 
-    <div class="question_data">
+    <div class="question-preview">
       <span><a href="/users/<%=question.user.id%>">Author <%=question.user%></span> |
       <span><%=question.answers.length%> answers</span> |
       <span><%=question.comments.length%> comments</span>
