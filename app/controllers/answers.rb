@@ -28,7 +28,7 @@ put '/answers/:id' do
   @question = @answer.question
   @user = @answer.user
   halt(401, "You do not have permission to complete this action.") unless login? && current_user == @user
-  @answer.update_attributes(params[:question])
+  @answer.update_attributes(params[:answer].merge(edited_at: DateTime.now))
   if @answer.save
     redirect "questions/#{@question.id}"
   else

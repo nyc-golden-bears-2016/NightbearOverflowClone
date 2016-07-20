@@ -40,7 +40,7 @@ put '/questions/:id' do
   @question = Question.find(params[:id])
   @user = @question.user
   halt(401, "You do not have permission to complete this action.") unless login? && current_user == @user
-  @question.update_attributes(params[:question])
+  @question.update_attributes(params[:question].merge(edited_at: DateTime.now))
   if @question.save
     @question.update_tags_and_associations(params[:tags])
     erb :"questions/#{@question.id}"

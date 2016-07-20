@@ -5,6 +5,9 @@ class Question < ActiveRecord::Base
  has_many :votes, as: :votable, dependent: :destroy
  has_and_belongs_to_many :tags, dependent: :destroy
 
+ validates :title, :body, :user_id, presence: true
+ validates :title, length: { maximum: 120 }
+
    def tag_list
      usable_list = ""
      self.tags.each do |tag|
