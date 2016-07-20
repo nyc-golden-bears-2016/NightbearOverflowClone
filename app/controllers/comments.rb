@@ -8,7 +8,6 @@ get '/comments/answer' do
   erb :'/comments/new'
 end
 
-
 post '/comments/question' do
     @question = Question.find(params[:question_id])
     @comment = @post.comments.new(content:params[:content],user_id:current_user.id)
@@ -34,15 +33,3 @@ post '/comments/answer' do
       erb :'/comments/new'
     end
 end
-
-
-
-
-
-
-
-
-
-
-
-
