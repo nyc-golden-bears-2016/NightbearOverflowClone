@@ -1,0 +1,33 @@
+<div class="content">
+<div class="comments">
+  <% if @errors %>
+    <ul>
+      <% @errors.each do |error| %>
+      <li><%= error %>
+      <% end %>
+    </ul>
+  <% end %>
+
+<% if @question %>
+  <form id="" action="/comments/question" method="post">
+    <div class="container">
+      <h2> Your Comment</h2>
+      <textarea name="content" rows="5" cols="50"></textarea>
+    </div>
+      <input type="submit" name="Post Comment">
+    </form>
+<% end %>
+
+
+<% if @answer %>
+  <form id="" action="/comments/answer" method="post">
+    <div class="container">
+      <h2> Your Comment</h2>
+      <textarea name="content" rows="5" cols="50"></textarea>
+    </div>
+      <input type="submit" name="Post Comment">
+    </form>
+<% end %>
+
+</div>
+</div>
