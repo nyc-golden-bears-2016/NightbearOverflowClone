@@ -1,7 +1,7 @@
 <div class='content'>
   <h1>Tags:</h1>
   <% @tags.each do |tag| %>
-    <a class="tags" href="/tags/<%= tag.id %>"><%= tag.name %></a>
+    <a class="tags" href="/tags/<%= tag.id %>"><%= tag.subject %></a>
   <% end %>
 </div>
 
@@ -12,13 +12,7 @@
         <td>Create new tag:</td>
       </tr>
       <tr>
-        <td><input type="text" name="tag[name]" style="width:100%;"></td>
-      </tr>
-      <tr>
-        <td>Description:</td>
-      </tr>
-      <tr>
-        <td><textarea name="tag[description]" rows="5" cols="50"></textarea>
+        <td><input type="text" name="tag[subject]" style="width:100%;"></td>
       </tr>
     </table><br>
     <input type="submit" name="Create Tag">
