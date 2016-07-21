@@ -14,7 +14,7 @@
   <div id="title"><strong><%=@question.title%></strong><br><span><a href="/users/<%=@question.user.id%>">  <%=@question.user.username%></a></span></div>
   <div><%=@question.body%></div>
   <%if @question.updated_at != @question.created_at%>
-    <div>Edited: <%=@question.updated_at%></div>
+    <div>Edited: <%=@question.edited_at%></div>
   <%else%>
     <div>Created: <%=@question.created_at%></div>
   <%end%>
