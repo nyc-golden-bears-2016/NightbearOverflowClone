@@ -2,7 +2,7 @@
   <label>NAVIGATION<label>
   <%if logged_in?%>
     <a href='/questions/new'>Ask A Question</a>
-    <a href='/users/#{user.id}'>Your Account</a>
+    <a href='/users/#{current_user.id}'>Your Account</a>
     <a href= '/sessions/logout'>Log Out</a>
   <%else%>
     <a href= '/users/new'>Register</a>
