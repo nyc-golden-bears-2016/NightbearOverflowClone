@@ -8,7 +8,7 @@
     Answers: <%= question.answers.length %> |
     Views: <%= question.total_views %> |
     Tags: <% question.tags.each do |tag| %>
-      <a href='tags/<%= tag.id %>'><%= tag.subject %></a>
+      <div id='tags'><a href='tags/<%= tag.id %>'><%= tag.subject %></a></div>
     <% end %>
   <% end %>
 <% end %> 
