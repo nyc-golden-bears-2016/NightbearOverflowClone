@@ -2,7 +2,7 @@
 
   <div class="voting">
     <span id="upvote">Upvote</span>
-    <span><%=question.total_votes%></span>
+    <span><%=@question.total_votes%></span>
     <span id="downvote">Downvote</span>
   </div>
 
@@ -16,6 +16,17 @@
   <%end%>
 </div>
 <br>
+
+<!-- TAGSSS<div class="question">
+<div><%=@question.title%><br><span><a href="/users/<%=@question.user.id%>">  <%=@question.user.username%></a></span></div><br>
+<div><%=@question.body[2..-3]%></div>
+<%if @question.updated_at != @question.created_at%>
+  <div>Edited: <%=@question.updated_at%></div>
+<%else%>
+  <div>Created: <%=@question.created_at%></div>
+<%end%>
+</div>
+<br> -->
   <div class="comment">
   <%@comments.each do |comment|%>
       <div><%=comment.body%></div>
@@ -31,6 +42,11 @@
 
   <div class="answer">
   <%@answers.each do |answer|%>
+  <div class="voting">
+    <span id="upvote">Upvote</span>
+    <span><%=answer.total_votes%></span>
+    <span id="downvote">Downvote</span>
+  </div>
       <div><%=answer.body%></div>
       <div><a href="/users/<%=answer.user.id%>"><%=answer.user.username%></a></div>
       <%if answer.updated_at != answer.created_at%>

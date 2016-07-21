@@ -21,10 +21,10 @@ class Question < ActiveRecord::Base
      tags.each do |tag|
        if Tag.find_by(subject: tag.downcase)
          old_tag = Tag.find_by(subject: tag.downcase)
-         QuestionTag.new(question: self, tag: old_tag)
+         self.tags << old_tag
        else
          new_tag = Tag.create(subject: tag.downcase)
-         QuestionTag.new(question: self, tag: new_tag)
+         self.tags << old_tag
        end
      end
    end
@@ -35,10 +35,10 @@ class Question < ActiveRecord::Base
        if Tag.find_by(subject: tag.downcase) && QuestionTag.find_by(question: self, tag: tag.downcase)
        elsif Tag.find_by(subject: tag.downcase)
            old_tag = Tag.find_by(subject: tag.downcase)
-           QuestionTag.new(question: self, tag: old_tag)
+           self.tags << old_tag
        else
          new_tag = Tag.create(subject: tag.downcase)
-         QuestionTag.new(question: self, tag: new_tag)
+         self.tags << new_tag
        end
      end
    end

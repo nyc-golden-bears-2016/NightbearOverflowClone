@@ -5,6 +5,7 @@ Question.delete_all
 Answer.delete_all
 Comment.delete_all
 Vote.delete_all
+Tag.delete_all
 
 20.times do
   User.create!({ username: Faker::Superhero.name,
@@ -12,10 +13,11 @@ Vote.delete_all
                 password: 'password123' })
 end
 
+questions = []
 100.times do
-  Question.create!({ title: Faker::Book.title,
-                    body: Faker::Hipster.paragraphs,
-                    user_id: rand(1..20) })
+  questions << Question.create!({ title: Faker::Book.title,
+                                  body: Faker::Hipster.paragraphs,
+                                  user_id: rand(1..20) })
 end
 
 100.times do
@@ -39,18 +41,27 @@ end
                     user_id: rand(1..20) })
 end
 
+tags = []
 80.times do
-  Tag.create!({ user_id: rand(1..20),
-                subject: Faker::Beer.style })
+  tags << Tag.create!({ user_id: rand(1..20),
+                        subject: Faker::Beer.style })
 end
 
-# 80.times do
-#   QuestionsTag.create!({ tag_id: rand(1..80),
-#                         question_id: rand(1..100) })
-# end
+tags.each do |tag|
+  questions[rand(0..99)].tags << tag
+end
 
-500.times do
-  Vote.create!({ user_id: rand(1..20),
-                 votable_id: rand(1..100),
-                 votable_type: "Question" })
+votes = []
+
+200.times do
+  votes << Vote.create!({ user_id: rand(1..20),
+                          votable_id: rand(1..100),
+                          votable_type: "Question" })
+end
+
+
+200.times do
+  votes << Vote.create!({ user_id: rand(1..20),
+                          votable_id: rand(1..100),
+                          votable_type: "Answer" })
 end
