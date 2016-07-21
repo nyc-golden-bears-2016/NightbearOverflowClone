@@ -1,1 +1,19 @@
-new.erb
+<div class="container">
+  <h1 class="homepage_header">Search Results</h1>
+  <div><%@search_results.each do |question| %>
+    <div class="question">
+    <div id="title"><a href="/questions/<%=question.id%>"><%=question.title %></a></div>
+    <div><%=question.body%></div>
+    </div>
+
+    <div class="question-preview">
+      <span class="username"><a href="/users/<%=question.user.id%>"><%=question.user.username%></a></span> |
+      <span class="num_of_answers"><%=question.answers.length%> answer(s)</span> |
+      <span class="num_of_comments"><%=question.comments.length%> comment(s)</span> |
+      <span class="num_of_votes"><%=question.total_votes%> vote(s)</span>
+      </div>
+    </div>
+    <br>
+  <% end %>
+
+</div>

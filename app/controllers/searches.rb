@@ -1,6 +1,11 @@
 post '/searches' do
-  @search_query = params[:search].split
-  @search_results = Question.search(@search_query)
-  @questions = Question.all.where.not(words_that_match: 0).order(words_that_match: :desc).limit(10)
+  search_query = params[:search].downcase.split(//)
+  @search = []
+  search_query.each do |word|
+    @search += Question.where('title LIKE ?', "%#{word}%")
+    @search += Question.where('body LIKE ?', "%#{word}%")
+  end
+  @search.uniq!.sort_by! { |x| x.answers.length }
+  @search_results = @search.reverse.take(10)
   erb :'/searches/new'
 end
