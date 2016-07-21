@@ -5,6 +5,8 @@ class CreateQuestions < ActiveRecord::Migration
     t.text :body, null: false
     t.references :user, null: false
     t.integer :total_votes, default: 0
+    t.boolean :active_thread, default: true
+    t.integer :total_views, default: 0
 
     t.timestamps( null: false )
     end
