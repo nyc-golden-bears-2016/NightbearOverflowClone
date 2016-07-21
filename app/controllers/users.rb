@@ -7,6 +7,7 @@ post '/users' do
   if @user.save
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
+        binding.pry
     redirect '/'
     end
   else
@@ -15,7 +16,8 @@ post '/users' do
   end
 end
 
-get 'users/:user_id' do
+
+get '/users/:id' do
 	@user = User.find(params[:user_id])
 		erb :'/users/show'
 end

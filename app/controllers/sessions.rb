@@ -1,15 +1,15 @@
 get '/sessions/login' do
-	erb :'users/login'
+	erb :'sessions/login'
 end
 
-post 'sessions/login' do 
+post '/sessions/login' do 
 	@user = User.find_by(username: params[:user][:username])
 		if @user && @user.authenticate(params[:user][:password])
 			session[:user_id] = @user.id 
 			redirect '/'
 		else
 			@error = "Email/Password incorrect"
-			erb :'/users/login'
+			erb :'/sessions/login'
 		end
 	end
 

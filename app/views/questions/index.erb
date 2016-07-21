@@ -1,9 +1,9 @@
 <nav>
   <label>NAVIGATION<label>
   <%if logged_in?%>
-    <a href= '/sessions/logout'>Log Out</a>
-    <a href='/users/show'>Your Account</a>
     <a href='/questions/new'>Ask A Question</a>
+    <a href='/users/#{user.id}'>Your Account</a>
+    <a href= '/sessions/logout'>Log Out</a>
   <%else%>
     <a href= '/users/new'>Register</a>
     <a href='/sessions/login'>Log In</a>
