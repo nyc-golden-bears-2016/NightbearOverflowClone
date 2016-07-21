@@ -31,7 +31,7 @@
 <%end%>
 <%if logged_in? && current_user == @question.user%>
 <span><a href="/questions/<%=@question.id%>/edit">Edit Question</a></span>
-<form action="/questions/<%=@question.id%>%>" method="post">
+<form action="/questions/<%=@question.id%>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Question"><br>
 </form>
@@ -77,9 +77,9 @@
         <div><a href="/answers/<%=answer.id%>/bestanswer">Select As Best Answer</a></div>
       <%end%>
       <br>
-      <%if current_user == answer.user%>
+      <%if logged_in? && current_user == answer.user%>
       <span><a href="/answers/<%=answer.id%>/edit">Edit Answer</a></span>
-      <form action="/answers/<%=answer.id%>%>" method="post">
+      <form action="/answers/<%=answer.id%>" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete Answer"><br>
       </form>

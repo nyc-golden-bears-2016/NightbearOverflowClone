@@ -18,16 +18,15 @@
   <title></title>
 </head>
 <nav>
-  <label>NAVIGATION<label>
   <%if logged_in?%>
-    <a href= '/'>Main</a>
-    <a href='/questions/new'>Ask A Question</a>
-    <a href='/users/<%=current_user.id%>'>Your Account</a>
-    <a href= '/sessions/logout'>Log Out</a>
+    <li><a href= '/'>Main</a></li>
+    <li><a href='/questions/new'>Ask A Question</a></li>
+    <li><a href='/users/<%=current_user.id%>'>Your Account</a></li>
+    <li><a href= '/sessions/logout'>Log Out</a></li>
   <%else%>
-    <a href= '/'>Main</a>
-    <a href= '/users/new'>Register</a>
-    <a href='/sessions/login'>Log In</a>
+    <li><a href= '/'>Main</a>
+    <li><a href= '/users/new'>Register</a></li>
+    <li><a href='/sessions/login'>Log In</a></li>
   <%end%>
 </nav>
 <body>

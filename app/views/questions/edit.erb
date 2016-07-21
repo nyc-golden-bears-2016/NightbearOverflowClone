@@ -5,11 +5,11 @@
 <form action="/questions/<%=@question.id%>" method="post">
   <input type="hidden" name="_method" value="put">
   <label>Title:</label>
-  <input type="text" name="question[title]"><%=@question.title%></input>
+  <input type="text" name="question[title]" value= "<%=@question.title%>">
   <label>Question:</label>
   <textarea name="question[body]"><%=@question.body%></textarea>
   <label>Add or Remove Tags:</label>
-  <input type="text" name="tags"><%=@tags%></input>
+  <input type="text" name="tags" value="<%=@tags%>">
   <input type="submit" value="Edit Post"><br>
 </form>
 
