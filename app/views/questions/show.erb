@@ -46,9 +46,13 @@
   <div class="answer">
   <%@answers.each do |answer|%>
   <div class="voting">
-    <span id="upvote">Upvote</span>
-    <span><%=answer.total_votes%></span>
-    <span id="downvote">Downvote</span>
+    <form id="upvote" action="/answers/<%=answer.id%>/upvote" method="post">
+      <input type="submit" value="up">
+    </form>
+    <span><%=answer.total_votes%> answer votes</span>
+    <form id="downvote" action="/answers/<%=answer.id%>/downvote" method="post">
+      <input type="submit" value="down">
+    </form>
   </div>
       <%if answer.best_answer == true%>
         <div>Selected As Best Answer!</a></div>
