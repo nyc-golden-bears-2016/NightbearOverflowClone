@@ -1,9 +1,13 @@
 <div class="questions">
 
   <div class="voting">
-    <span id="upvote">Upvote</span>
-    <span><%=@question.total_votes%></span>
-    <span id="downvote">Downvote</span>
+    <form id="upvote" action="/<%=@question.id%>/upvote" method="post">
+      <input type="submit" value="up">
+    </form>
+    <span><%=@question.total_votes%> question votes</span>
+    <form id="downvote" action="/<%=@question.id%>/downvote" method="post">
+      <input type="submit" value="down">
+    </form>
   </div>
 <br>
   <div class="question">
