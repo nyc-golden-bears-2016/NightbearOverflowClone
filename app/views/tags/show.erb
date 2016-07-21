@@ -3,10 +3,10 @@
 <h4>Active Threads: </h4>
 <% if @questions %>
   <% @questions.each do |question| %>
-    Subject: <a href='questions/<%= question.id %>'><%= question.title %></a>
-    Votes: <%= question.total_votes %>
-    Answers: <%= question.answers.length %>
-    Views: <%= question.views %>
+    Subject: <a href='questions/<%= question.id %>'><%= question.title %></a> |
+    Votes: <%= question.votes.length %> |
+    Answers: <%= question.answers.length %> |
+    Views: <%= question.total_views %> |
     Tags: <% question.tags.each do |tag| %>
       <a href='tags/<%= tag.id %>'><%= tag.subject %></a>
     <% end %>
