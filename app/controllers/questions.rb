@@ -1,6 +1,8 @@
 get '/questions' do
-  @user = User.find(session[:user_id])
   @questions = Question.all.order(created_at: :desc)
+  if logged_in?
+    @user = User.find(session[:user_id])
+  end
   erb :'questions/index'
 end
 

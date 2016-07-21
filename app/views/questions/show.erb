@@ -29,7 +29,7 @@
 <span><a href="/questions/<%=@question.id%>/answers/new">Answer this Question</a></span>
 <span><a href="/questions/<%=@question.id%>/comments/new">Leave a Comment</a></span>
 <%end%>
-<%if current_user == @question.user%>
+<%if logged_in? && current_user == @question.user%>
 <span><a href="/questions/<%=@question.id%>/edit">Edit Question</a></span>
 <form action="/questions/<%=@question.id%>%>" method="post">
   <input type="hidden" name="_method" value="delete">
