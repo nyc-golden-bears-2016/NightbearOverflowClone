@@ -1,17 +1,21 @@
 
 <div id="user-activity-container">
-  <h3><%=@user.username%>'s Activity Statistics:</h3>
+  <h3 style='color:#6A5ACD' id="title"><%=@user.username%>'s Activity Statistics:</h3>
 
-  <a href="/users/<%=@user.id%>/answers">Answers (<%=@user.answers.count%>)</a><br>
-  <a href="/users/<%=@user.id%>/questions">Questions (<%= @user.questions.count %>)</a><br>
-
-  <h3>Post Activity</h3>
-  <h4><%=@user.username%>'s Questions</h4>
+<div class='question'>
+  Answers (<%=@user.answers.count%>)<br>
+  Questions (<%= @user.questions.count %>)<br>
+  Comments (<%= @user.comments.count %>)
+</div>
+  <h3 style='color:#6A5ACD' id='title'>Post Activity</h3>
+  <div class='question'>
+  <h4 style='color:white' class='tag_header'><%=@user.username%>'s Questions</h4>
   <%@user.questions.each do |question|%>
     <div><a href="/questions/<%=question.id%>"><%=question.title%></a></div>
   <%end%>
-  <h4><%=@user.username%>'s Responses</h4>
+  <h4 style='color:white' class='tag_header'><%=@user.username%>'s Answers Given</h4>
  <%@user.answers.each do |answer|%>
-    <div><a href="/questions/<%=answer.question.id%>"><%= answer.body%></a></div>
+    <div><a href="/answers/<%=answer.question.id%>"><%= answer.body%></a></div>
   <%end%>
+</div>
 </div>
