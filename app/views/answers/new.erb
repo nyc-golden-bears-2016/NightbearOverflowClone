@@ -1,7 +1,11 @@
-<%if @errors %>
-  <%=erb :_errors%>
-<%end%>
-
+<% if @errors %>
+<div class="errors">
+  <label>ERRORS:</label><br>
+  <%@errors.each do |error| %>
+    <strong><%=error%></strong><br>
+  <%end%>
+</div>
+<% end %>
 <form action="/questions/<%=@question.id%>/answers" method="post">
   <label>Body:</label>
   <textarea name="answer[body]"></textarea>

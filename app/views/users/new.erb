@@ -1,5 +1,12 @@
-
-<h2>Create a New User</h2>
+<% if @errors %>
+<div class="errors">
+  <label>ERRORS:</label><br>
+  <%@errors.each do |error| %>
+    <strong><%=error%></strong><br>
+  <%end%>
+</div>
+<% end %>
+<h2>Register!</h2>
 <form method="post" action="/users">
 <h3>Username:</h3>
 <input type="text" name="user[username]" placeholder="Username"><br>

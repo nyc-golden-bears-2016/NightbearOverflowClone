@@ -31,7 +31,7 @@ get '/answers/:id/bestanswer' do
   @question = @answer.question
   halt(401, "You do not have permission to complete this action.") unless logged_in? && current_user == @question.user
   if @question.answers.include?(Answer.where(best_answer: true))
-    @errors = ["Best answer already labeled"]
+    @errors = ["Best answer already labeled."]
     redirect "/questions/#{@question.id}"
   elsif @answer.user == current_user
       @errors = ["Choosing your own answer??? Rude!"]
