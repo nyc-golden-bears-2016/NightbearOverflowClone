@@ -17,6 +17,6 @@ end
 
 
 get '/users/:id' do
-	@user = User.find(params[:user_id])
+	@user = User.find(params[:id])
 		erb :'/users/show'
 end
