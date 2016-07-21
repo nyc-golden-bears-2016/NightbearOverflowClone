@@ -19,11 +19,11 @@ class Question < ActiveRecord::Base
    def create_tags_and_associations(input)
      tags = input.split(",")
      tags.each do |tag|
-       if Tag.find_by(subject: tag.downcase)
-         old_tag = Tag.find_by(subject: tag.downcase)
-         self.tags << old_tag
-       else
+       if !Tag.find_by(subject: tag.downcase)
          new_tag = Tag.create(subject: tag.downcase)
+         self.tags << new_tag
+       else
+         old_tag = Tag.find_by(subject: tag.downcase)
          self.tags << old_tag
        end
      end

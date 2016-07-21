@@ -1,16 +1,16 @@
-get '/comments/question' do
+get '/comments/question/:question_id/new' do
   @question = Question.find(params[:question_id])
   erb :'/comments/new'
 end
 
-get '/comments/answer' do
+get '/comments/answer/:answer_id/new' do
   @answer = Answer.find(params[:answer_id])
   erb :'/comments/new'
 end
 
 post '/comments/question' do
     @question = Question.find(params[:question_id])
-    @comment = @post.comments.new(content:params[:content],user_id:current_user.id)
+    @comment = @question.comments.new(content:params[:content],user_id:current_user.id)
     if @comment.save
     	@comment.question_id = @question.id
     	@comment.save

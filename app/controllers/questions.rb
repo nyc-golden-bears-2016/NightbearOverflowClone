@@ -4,12 +4,12 @@ get '/questions' do
 end
 
 get '/questions/new' do
-  @errors = ["You will need to login in order to post this question."] unless login?
+  @errors = ["You will need to login in order to post this question."] unless logged_in?
   erb :'questions/new'
 end
 
 post '/questions' do
-  halt(401, "Please login to ask questions.") unless login?
+  halt(401, "Please login to ask questions.") unless logged_in?
   question = Question.new(params[:question].merge(user: current_user))
   if question.save
     question.create_tags_and_associations(params[:tags])
@@ -32,14 +32,14 @@ get '/questions/:id/edit' do
   @question = Question.find(params[:id])
   @user = @question.user
   @tags = @question.tag_list
-  halt(401, "You do not have permission to complete this action.") unless login? && current_user == @user
+  halt(401, "You do not have permission to complete this action.") unless logged_in? && current_user == @user
   erb :'questions/edit'
 end
 
 put '/questions/:id' do
   @question = Question.find(params[:id])
   @user = @question.user
-  halt(401, "You do not have permission to complete this action.") unless login? && current_user == @user
+  halt(401, "You do not have permission to complete this action.") unless logged_in? && current_user == @user
   @question.update_attributes(params[:question].merge(edited_at: DateTime.now))
   if @question.save
     @question.update_tags_and_associations(params[:tags])
@@ -53,7 +53,7 @@ end
 delete '/questions/:id' do
   @question = Question.find(params[:id])
   @user = @question.user
-  halt(401, "You do not have permission to complete this action.") unless login? && current_user == @user
+  halt(401, "You do not have permission to complete this action.") unless logged_in? && current_user == @user
   @question.destroy
   erb :'questions/index'
 end
