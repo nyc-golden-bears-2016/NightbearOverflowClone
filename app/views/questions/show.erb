@@ -1,7 +1,7 @@
 <div class="questions">
 
   <div class="voting">
-    <form id="upvote" action="/<%=@question.id%>/upvote" method="post">
+    <form id="upvote" action="/<%=@question.id%>/upvote" method="post">   
       <input type="submit" value="up">
     </form>
     <span><%=@question.total_votes%> question votes</span>
@@ -9,6 +9,11 @@
       <input type="submit" value="down">
     </form>
   </div>
+    <%if @errors%>
+    <%@errors.each do |error| %>
+    <%=error %>
+    <% end %> 
+    <% end %> 
 <br>
   <div class="question">
   <div id="title"><strong><%=@question.title%></strong><br><span><a href="/users/<%=@question.user.id%>">  <%=@question.user.username%></a></span></div>
