@@ -107,6 +107,7 @@ DEPENDENCIES
   factory_girl
   faker
   pg
+  pry
   pry-byebug
   rack-test
   rake
