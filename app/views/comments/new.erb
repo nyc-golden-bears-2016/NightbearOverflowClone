@@ -1,12 +1,13 @@
+<% if @errors %>
+<div class="errors">
+  <label>ERRORS:</label><br>
+  <%@errors.each do |error| %>
+    <strong><%=error%></strong><br>
+  <%end%>
+</div>
+<% end %>
 <div class="content">
 <div class="comments">
-  <% if @errors %>
-    <ul>
-      <% @errors.each do |error| %>
-      <li><%= error %>
-      <% end %>
-    </ul>
-  <% end %>
 
 <% if @question %>
   <form id="" action="/questions/<%= @question.id %>/comments" method="post">

@@ -20,10 +20,6 @@ nav li a:hover {
     background-color: #191970;
 }
 
-.hidenav {
-		display: none;
-}
-
 .homepage_header {
 	border: 1px solid #6A5ACD;
 	border-radius: 10px;
@@ -37,11 +33,10 @@ nav li a:hover {
 	border-radius: 10px;
 	color: #191970;
 	text-align: center;
-	/*width: 60%;*/
 	margin: 0 auto;
 	padding: 5px;
   width: 60%;
-	display: inline-block;
+	display: block;
 }
 
 .question-preview {
@@ -133,4 +128,8 @@ nav li a:hover {
   float:left;
   padding-top: 5%;
 	display: inline-block;
+}
+
+.voting span {
+	padding-left: 8px;
 }

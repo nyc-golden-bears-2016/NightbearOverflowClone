@@ -1,5 +1,10 @@
 <% if @errors %>
-<%= render partial: "_errors" %>
+<div class="errors">
+  <label>ERRORS:</label><br>
+  <%@errors.each do |error| %>
+    <strong><%=error%></strong><br>
+  <%end%>
+</div>
 <% end %>
 
 <h2>Log in</h2>

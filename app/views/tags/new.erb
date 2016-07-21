@@ -1,3 +1,11 @@
+<% if @errors %>
+<div class="errors">
+  <label>ERRORS:</label><br>
+  <%@errors.each do |error| %>
+    <strong><%=error%></strong><br>
+  <%end%>
+</div>
+<% end %>
 <div class="content">
   <form action="/tags" method="post">
       Create new tag:
