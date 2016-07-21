@@ -1,6 +1,6 @@
 get '/tags' do
    @tags = Tag.all
-   @tags = @tags.sort {|x,y| y.posts.length <=> x.posts.length}
+   @tags = @tags.sort {|x,y| y.questions.length <=> x.questions.length}
   erb :'/tags/index'
 end
 

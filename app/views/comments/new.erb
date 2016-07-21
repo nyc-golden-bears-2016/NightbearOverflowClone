@@ -9,7 +9,7 @@
   <% end %>
 
 <% if @question %>
-  <form id="" action="/comments/question" method="post">
+  <form id="" action="/questions/<%= @question.id %>/comments" method="post">
     <div class="container">
       <h2> Your Comment</h2>
       <textarea name="content" rows="5" cols="50"></textarea>
@@ -20,7 +20,7 @@
 
 
 <% if @answer %>
-  <form id="" action="/comments/answer" method="post">
+  <form id="" action="/answers/<%= @answer.id %>/comments" method="post">
     <div class="container">
       <h2> Your Comment</h2>
       <textarea name="content" rows="5" cols="50"></textarea>

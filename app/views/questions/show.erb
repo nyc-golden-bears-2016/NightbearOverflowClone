@@ -23,7 +23,7 @@
 <br>
 <%if logged_in?%>
 <span><a href="/questions/<%=@question.id%>/answers/new">Answer this Question</a></span>
-<span><a href="/comments/question/<%=@question.id%>/new">Leave a Comment</a></span>
+<span><a href="/questions/<%=@question.id%>/comments/new">Leave a Comment</a></span>
 <%end%>
 
   <div class="comment">
@@ -58,7 +58,7 @@
       <%end%>
       <br>
       <%if logged_in?%>
-      <span><a href="/comments/question/<%=answer.id%>/new">Leave a Comment</a></span>
+      <span><a href="/answers/<%=answer.id%>/comments/new">Leave a Comment</a></span>
       <%end%>
       <div class="comment">
       <%answer.comments.each do |comment|%>
