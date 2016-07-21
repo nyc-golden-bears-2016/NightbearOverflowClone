@@ -23,7 +23,7 @@ end
 
 get '/questions/:id' do
   @question = Question.find(params[:id])
-  @question.update_attributes(total_views: += 1)
+  # @question.update_attributes(total_views: += 1)
   @comments = @question.comments
   @answers = @question.answers
   @tags = @question.tags

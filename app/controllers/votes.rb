@@ -26,6 +26,8 @@ post '/answers/:answer_id/upvote' do
   @question = @answer.question
   if logged_in?
     vote = Vote.create(votable_id:@answer.id,votable_type:"Answer", user_id: current_user.id, value:1)
+    @answer.total_votes += 1
+    @answer.save    
   end
   redirect "/questions/#{@question.id}"
 end
@@ -35,6 +37,8 @@ post '/answers/:answer_id/downvote' do
   @question = @answer.question
   if logged_in?
     vote = Vote.create(user_id: current_user.id, votable_id:@answer.id, votable_type:"Answer", value:-1)
+    @answer.total_votes -= 1
+    @answer.save      
   end
   redirect "/questions/#{@question.id}"
 end
