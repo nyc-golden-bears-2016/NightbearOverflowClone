@@ -2,13 +2,8 @@
   <%=erb :_errors%>
 <%end%>
 
-<form action="/questions/new" method="post">
-  <input type="hidden" name="_method" value="put">
-  <label>Title:</label>
-  <input type="text" name="question[title]">
-  <label>Question:</label>
-  <input type="text" name="question[body]">
-  <label>Add Tags:</label>
-  <input type="text" name="tags">
-  <input type="submit" value="Create Post"><br>
+<form action="/questions/<%=@question.id%>/answers" method="post">
+  <label>Body:</label>
+  <input type="text" name="answer[body]">
+  <input type="submit" value="Submit Answer"><br>
 </form>

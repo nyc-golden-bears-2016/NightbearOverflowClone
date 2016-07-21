@@ -5,28 +5,27 @@
     <span><%=@question.total_votes%></span>
     <span id="downvote">Downvote</span>
   </div>
-
+<br>
   <div class="question">
-  <div><%=@question.title%><br><span><a href="/users/<%=@question.user.id%>">  <%=@question.user.username%></a></span></div><br>
-  <div><%=@question.body[2..-3]%></div>
+  <div id="title"><strong><%=@question.title%></strong><br><span><a href="/users/<%=@question.user.id%>">  <%=@question.user.username%></a></span></div>
+  <div><%=@question.body%></div>
   <%if @question.updated_at != @question.created_at%>
     <div>Edited: <%=@question.updated_at%></div>
   <%else%>
     <div>Created: <%=@question.created_at%></div>
   <%end%>
 </div>
-<br>
-
-<!-- TAGSSS<div class="question">
-<div><%=@question.title%><br><span><a href="/users/<%=@question.user.id%>">  <%=@question.user.username%></a></span></div><br>
-<div><%=@question.body[2..-3]%></div>
-<%if @question.updated_at != @question.created_at%>
-  <div>Edited: <%=@question.updated_at%></div>
-<%else%>
-  <div>Created: <%=@question.created_at%></div>
+<div class="tags">
+<%@question.tags.each do |tag|%>
+<span><a href="/tags/<%=tag.id%>"><%=tag.subject%></a></span>
 <%end%>
 </div>
-<br> -->
+<br>
+<%if logged_in?%>
+<span><a href="/questions/<%=@question.id%>/answers/new">Answer this Question</a></span>
+<span><a href="/comments/question/<%=@question.id%>/new">Leave a Comment</a></span>
+<%end%>
+
   <div class="comment">
   <%@comments.each do |comment|%>
       <div><%=comment.body%></div>
@@ -54,10 +53,13 @@
       <%else%>
         <div>Created: <%=answer.created_at%></div>
       <%end%>
-      <%if login? && current_user == answer.user%>
+      <%if logged_in? && current_user == answer.user%>
         <div>Select As Best Answer</div>
       <%end%>
       <br>
+      <%if logged_in?%>
+      <span><a href="/comments/question/<%=answer.id%>/new">Leave a Comment</a></span>
+      <%end%>
       <div class="comment">
       <%answer.comments.each do |comment|%>
           <div><%=comment.body%></div>
