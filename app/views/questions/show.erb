@@ -13,7 +13,7 @@
   <div class="question">
   <div id="title"><strong><%=@question.title%></strong><br><span><a href="/users/<%=@question.user.id%>">  <%=@question.user.username%></a></span></div>
   <div><%=@question.body%></div>
-  <%if @question.updated_at != @question.created_at%>
+  <%if @question.edited_at%>
     <div>Edited: <%=@question.edited_at%></div>
   <%else%>
     <div>Created: <%=@question.created_at%></div>
@@ -41,7 +41,7 @@
   <%@comments.each do |comment|%>
       <div><%=comment.body%></div>
       <div><a href="/users/<%=comment.user.id%>"><%=comment.user.username%></a></div>
-      <%if comment.updated_at != comment.created_at%>
+      <%if comment.edited_at%>
         <div>Edited: <%=comment.edited_at%></div>
       <%else%>
         <div>Created: <%=comment.created_at%></div>
@@ -66,7 +66,7 @@
       <%end%>
       <div><%=answer.body%></div>
       <div><a href="/users/<%=answer.user.id%>"><%=answer.user.username%></a></div>
-      <%if answer.updated_at != answer.created_at%>
+      <%if answer.edited_at%>
         <div>Edited: <%=answer.edited_at%></div>
       <%else%>
         <div>Created: <%=answer.created_at%></div>
@@ -89,7 +89,7 @@
       <%answer.comments.each do |comment|%>
           <div><%=comment.body%></div>
           <div><a href="/users/<%=comment.user.id%>"><%=comment.user.username%></a></div>
-          <%if comment.updated_at != comment.created_at%>
+          <%if comment.edited_at%>
             <div>Edited: <%=comment.edited_at%></div>
           <%else%>
             <div>Created: <%=comment.created_at%></div>
