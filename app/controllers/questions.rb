@@ -48,7 +48,7 @@ put '/questions/:id' do
   @question.update_attributes(params[:question].merge(edited_at: DateTime.now))
   if @question.save
     @question.update_tags_and_associations(params[:tags])
-    erb :"questions/#{@question.id}"
+    redirect "questions/#{@question.id}"
   else
     @errors = question.errors.full_messages
     erb :'questions/edit'

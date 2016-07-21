@@ -5,7 +5,7 @@
 <form action="/answers/<%=@answer.id%>" method="post">
   <input type="hidden" name="_method" value="put">
   <label>Answer:</label>
-  <input type="text" name="answer[body]"><%=@answer.body%></input>
+  <textarea name="answer[body]"><%=@answer.body%></textarea>
   <input type="submit" value="Edit Answer"><br>
 </form>
 
