@@ -4,6 +4,7 @@ class CreateComments < ActiveRecord::Migration
     t.text :body, null: false
     t.references :user, null: false, foreign_key: true, index: true
     t.references :commentable, polymorphic: true, index: true
+    t.datetime :edited_at
 
     t.timestamps( null: false )
     end
