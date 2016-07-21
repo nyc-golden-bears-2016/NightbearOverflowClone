@@ -1,16 +1,3 @@
-
-<nav>
-  <label>NAVIGATION<label>
-  <%if logged_in?%>
-    <a href='/questions/new'>Ask A Question</a>
-    <a href='/users/<%=@user.id%>'>Your Account</a>
-    <a href= '/sessions/logout'>Log Out</a>
-  <%else%>
-    <a href= '/users/new'>Register</a>
-    <a href='/sessions/login'>Log In</a>
-  <%end%>
-</nav>
-
 <div class="container">
   <h1 class="homepage_header">NIGHTBEAR OVERFLOW</h1>
   <div><%@questions.each do |question| %>
@@ -23,7 +10,7 @@
       <span class="username"><a href="/users/<%=question.user.id%>"><%=question.user.username%></a></span> |
       <span class="num_of_answers"><%=question.answers.length%> answer(s)</span> |
       <span class="num_of_comments"><%=question.comments.length%> comment(s)</span> |
-      <span class="num_of_votes"><%=question.total_votes%> votes</span>
+      <span class="num_of_votes"><%=question.total_votes%> vote(s)</span>
       </div>
     </div>
     <br>
