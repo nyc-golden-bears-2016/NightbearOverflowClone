@@ -6,7 +6,8 @@ post '/:question_id/upvote' do
     vote = Vote.create(votable_id:params[:question_id],votable_type:"Question", user_id: current_user.id, value:1)
     @question.total_votes += 1
     @question.save
-
+  else 
+    redirect '/sessions/login'
   end
   redirect "/questions/#{@question.id}"
 end
