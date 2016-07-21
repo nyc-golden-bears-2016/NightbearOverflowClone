@@ -31,16 +31,22 @@ class Question < ActiveRecord::Base
 
    def update_tags_and_associations(input)
      tags = input.split(",")
-     tags.each do |tag|
-       if Tag.find_by(subject: tag.downcase) && QuestionTag.find_by(question: self, tag: tag.downcase)
-       elsif Tag.find_by(subject: tag.downcase)
+     self_tags = self.tags
+     self_tags.each do |selftag|
+       tags.each do |tag|
+        if Tag.find_by(subject: tag.downcase) && self_tags.include?(tag)
+        elsif Tag.find_by(subject: tag.downcase) && !self_tags.include?(tag)
            old_tag = Tag.find_by(subject: tag.downcase)
            self.tags << old_tag
-       else
-         new_tag = Tag.create(subject: tag.downcase)
-         self.tags << new_tag
-       end
-     end
+        elsif Tag.find_by(subject: tag.downcase) && !tags.include?(selftag)
+           old_tag = Tag.find_by(subject: tag.downcase)
+           self.tags.delete(old_tag)
+        else
+           new_tag = Tag.create(subject: tag.downcase)
+           self.tags << new_tag
+        end
+      end
+    end
    end
 
 end

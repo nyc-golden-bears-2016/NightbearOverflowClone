@@ -28,9 +28,15 @@ end
 
 get '/answers/:id/bestanswer' do
   @answer = Answer.find(params[:id])
+  @question = @answer.question
   halt(401, "You do not have permission to complete this action.") unless logged_in? && current_user == @answer.user
-  ##Create best answer if question does not have other best answers
-  erb :'answers/edit'
+  if @question.answers.include?(Answer.where(best_answer: true))
+    @errors = ["Best answer already labeled"]
+    redirect "/questions/#{@question.id}"
+  else
+    @answer.best_answer == true
+    redirect "/questions/#{@question.id}"
+  end
 end
 
 put '/answers/:id' do
