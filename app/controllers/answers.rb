@@ -1,4 +1,7 @@
-get '/answers/new' do
+get '/answers/:q_id/new' do
+  @question = Question.find(params[:q_id])
+  #This is here to make sure user can't go directly to answer
+  #question without associated question
   @errors = ["You will need to login in order to answer this question."] unless login?
   erb :'answers/new'
 end
@@ -20,6 +23,13 @@ get '/answers/:id/edit' do
   @question = @answer.question
   @user = @answer.user
   halt(401, "You do not have permission to complete this action.") unless login? && current_user == @user
+  erb :'answers/edit'
+end
+
+get '/answers/:id/bestanswer' do
+  @answer = Answer.find(params[:id])
+  halt(401, "You do not have permission to complete this action.") unless login? && current_user == @answer.user
+  ##Create best answer if question does not have other best answers
   erb :'answers/edit'
 end
 

@@ -2,50 +2,72 @@
 
   <div class="voting">
     <span id="upvote">Upvote</span>
-    <span><%=@question.vote_total %></span>
+    <span><%=@question.total_votes%></span>
     <span id="downvote">Downvote</span>
   </div>
 
   <div class="question">
-  <div><%=@question.title%><br><span><a href="/users/<%=question.user.id%>"> by  <%=@question.user%></span></div><br>
-  <div><%=@question.body%></div>
-  <%if @question.edited_at != nil%>
-    <br><div>Edited:<%=@question.edited_at%></div>
+  <div><%=@question.title%><br><span><a href="/users/<%=@question.user.id%>">  <%=@question.user.username%></a></span></div><br>
+  <div><%=@question.body[2..-3]%></div>
+  <%if @question.updated_at != @question.created_at%>
+    <div>Edited: <%=@question.updated_at%></div>
   <%else%>
-    <br><div>Created:<%=@question.created_at%></div>
+    <div>Created: <%=@question.created_at%></div>
   <%end%>
-  </div>
+</div>
+<br>
 
+<!-- TAGSSS<div class="question">
+<div><%=@question.title%><br><span><a href="/users/<%=@question.user.id%>">  <%=@question.user.username%></a></span></div><br>
+<div><%=@question.body[2..-3]%></div>
+<%if @question.updated_at != @question.created_at%>
+  <div>Edited: <%=@question.updated_at%></div>
+<%else%>
+  <div>Created: <%=@question.created_at%></div>
+<%end%>
+</div>
+<br> -->
   <div class="comment">
   <%@comments.each do |comment|%>
       <div><%=comment.body%></div>
-      <div><%=comment.user%></div>
-      <%if comment.edited_at != nil%>
-        <br><div>Edited:<%=comment.edited_at%></div>
+      <div><a href="/users/<%=comment.user.id%>"><%=comment.user.username%></a></div>
+      <%if comment.updated_at != comment.created_at%>
+        <div>Edited: <%=comment.updated_at%></div>
       <%else%>
-        <br><div>Created:<%=comment.created_at%></div>
+        <div>Created: <%=comment.created_at%></div>
       <%end%>
+      <br>
     <%end%>
   </div>
 
   <div class="answer">
-  <%@answer.each do |answer|%>
+  <%@answers.each do |answer|%>
+  <div class="voting">
+    <span id="upvote">Upvote</span>
+    <span><%=answer.total_votes%></span>
+    <span id="downvote">Downvote</span>
+  </div>
       <div><%=answer.body%></div>
-      <div><%=answer.user%></div>
-      <%if answer.edited_at != nil%>
-        <br><div>Edited:<%=answer.edited_at%></div>
+      <div><a href="/users/<%=answer.user.id%>"><%=answer.user.username%></a></div>
+      <%if answer.updated_at != answer.created_at%>
+        <div>Edited: <%=answer.updated_at%></div>
       <%else%>
-        <br><div>Created:<%=answer.created_at%></div>
+        <div>Created: <%=answer.created_at%></div>
       <%end%>
+      <%if login? && current_user == answer.user%>
+        <div>Select As Best Answer</div>
+      <%end%>
+      <br>
       <div class="comment">
       <%answer.comments.each do |comment|%>
           <div><%=comment.body%></div>
-          <div><%=comment.user%></div>
-          <%if comment.edited_at != nil%>
-            <br><div>Edited:<%=comment.edited_at%></div>
+          <div><a href="/users/<%=comment.user.id%>"><%=comment.user.username%></a></div>
+          <%if comment.updated_at != comment.created_at%>
+            <div>Edited: <%=comment.updated_at%></div>
           <%else%>
-            <br><div>Created:<%=comment.created_at%></div>
+            <div>Created: <%=comment.created_at%></div>
           <%end%>
+        <br>
         <%end%>
       </div>
     <%end%>
