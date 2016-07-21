@@ -1,19 +1,19 @@
 <div class="questions">
 
   <div class="voting">
-    <form id="upvote" action="/<%=@question.id%>/upvote" method="post">   
-      <input type="submit" value="up">
+    <form id="upvote" action="/<%=@question.id%>/upvote" method="post">
+      <input type="submit" value="&#8670">
     </form>
-    <span><%=@question.total_votes%> question votes</span>
+    <span> <%=@question.total_votes%></span>
     <form id="downvote" action="/<%=@question.id%>/downvote" method="post">
-      <input type="submit" value="down">
+      <input type="submit" value="&#8671">
     </form>
   </div>
     <%if @errors%>
     <%@errors.each do |error| %>
     <%=error %>
-    <% end %> 
-    <% end %> 
+    <% end %>
+    <% end %>
 <br>
   <div class="question">
   <div id="title"><strong><%=@question.title%></strong><br><span><a href="/users/<%=@question.user.id%>">  <%=@question.user.username%></a></span></div>
@@ -60,11 +60,11 @@
   <%@answers.each do |answer|%>
   <div class="voting">
     <form id="upvote" action="/answers/<%=answer.id%>/upvote" method="post">
-      <input type="submit" value="up">
+      <input type="submit" value="&#8670">
     </form>
-    <span><%=answer.total_votes%> answer votes</span>
+    <span>  <%=answer.total_votes%></span>
     <form id="downvote" action="/answers/<%=answer.id%>/downvote" method="post">
-      <input type="submit" value="down">
+      <input type="submit" value="&#8671">
     </form>
   </div>
   <div class='question'>
