@@ -11,17 +11,18 @@
 </nav>
 
 <div class="container">
-  <h1>NIGHTBEAR OVERFLOW</h1>
+  <h1 class="homepage_header">NIGHTBEAR OVERFLOW</h1>
   <div><%@questions.each do |question| %>
     <div class="question">
-    <div><a href="/questions/<%=question.id%>"><%=question.title %></a></div>
+    <div id="title"><a href="/questions/<%=question.id%>"><%=question.title %></a></div>
     <div><%=question.body%></div>
     </div>
 
     <div class="question-preview">
-      <span><a href="/users/<%=question.user.id%>"><%=question.user.username%></a></span> |
-      <span><%=question.answers.length%> answer(s)</span> |
-      <span><%=question.comments.length%> comment(s)</span>
+      <span class="username"><a href="/users/<%=question.user.id%>"><%=question.user.username%></a></span> |
+      <span class="num_of_answers"><%=question.answers.length%> answer(s)</span> |
+      <span class="num_of_comments"><%=question.comments.length%> comment(s)</span> |
+      <span class="num_of_votes"><%=question.votes.length%> votes</span>
       </div>
     </div>
     <br>
