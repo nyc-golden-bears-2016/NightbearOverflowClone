@@ -16,8 +16,12 @@ nav li a {
     text-decoration: none;
 }
 
-nav li a:hover{
+nav li a:hover {
     background-color: #191970;
+}
+
+.hidenav {
+		display: none;
 }
 
 .homepage_header {

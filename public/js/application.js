@@ -1,12 +1,14 @@
 $(document).ready(function() {
-  $(pageY < 300).mouseover(function{
-    $('nav').show();
-  })
-    //Do something here.
-}
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $('body').mouseover(function() {
+    if (event.pageY < 70){
+      $('nav').slideDown( "slow" );
+    }
+  });
+  $('body').mouseover(function() {
+    if (event.pageY > 150){
+      $('nav').slideUp( "slow" );
+    }
+  });
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+
 });
