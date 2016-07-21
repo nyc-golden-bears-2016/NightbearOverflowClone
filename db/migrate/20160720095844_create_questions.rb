@@ -5,7 +5,6 @@ class CreateQuestions < ActiveRecord::Migration
     t.text :body, null: false
     t.references :user, null: false
     t.integer :total_votes, default: 0
-    t.datetime :edited_at
 
     t.timestamps( null: false )
     end

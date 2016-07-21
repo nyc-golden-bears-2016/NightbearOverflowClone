@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   has_many :tags
 
   validates :username, :email, { uniqueness: true, presence: true }
-  validates :email, format: { with: /\A.*@.*com\z/, message: "Email doesn't belong to a valid domain." }
+  # validates :email, format: { with: /\A.*@.*com\z/, message: "Email doesn't belong to a valid domain." }
   validates :password, length: { minimum: 8 }
 end

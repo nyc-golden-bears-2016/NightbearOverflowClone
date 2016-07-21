@@ -15,21 +15,22 @@
 
     <div class="voting">
       <span id="upvote">Upvote</span>
-      <span><%=@question.vote_total %></span>
+      <span><%=question.total_votes%></span>
       <span id="downvote">Downvote</span>
     </div>
 
     <div class="question">
-    <div><a href="/questions/<%=question.id%>"><%=question.title %></a></div><br>
-    <div><%=question.body %></div><br>
+    <div><a href="/questions/<%=question.id%>"><%=question.title %></a></div>
+    <div><%=question.body[2..-3]%></div>
     </div>
 
     <div class="question-preview">
-      <span><a href="/users/<%=question.user.id%>">Author <%=question.user%></span> |
-      <span><%=question.answers.length%> answers</span> |
-      <span><%=question.comments.length%> comments</span>
+      <span><a href="/users/<%=question.user.id%>"><%=question.user.username%></a></span> |
+      <span><%=question.answers.length%> answer(s)</span> |
+      <span><%=question.comments.length%> comment(s)</span>
       </div>
     </div>
+    <br>
   <% end %>
 
 </div>

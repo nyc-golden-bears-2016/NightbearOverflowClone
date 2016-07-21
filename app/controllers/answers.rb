@@ -26,6 +26,13 @@ get '/answers/:id/edit' do
   erb :'answers/edit'
 end
 
+get '/answers/:id/bestanswer' do
+  @answer = Answer.find(params[:id])
+  halt(401, "You do not have permission to complete this action.") unless login? && current_user == @answer.user
+  ##Create best answer if question does not have other best answers
+  erb :'answers/edit'
+end
+
 put '/answers/:id' do
   @answer = Answer.find(params[:id])
   @question = @answer.question
