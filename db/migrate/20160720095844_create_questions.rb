@@ -7,6 +7,7 @@ class CreateQuestions < ActiveRecord::Migration
     t.integer :total_votes, default: 0
     t.boolean :active_thread, default: true
     t.integer :total_views, default: 0
+    t.datetime :edited_at
 
     t.timestamps( null: false )
     end

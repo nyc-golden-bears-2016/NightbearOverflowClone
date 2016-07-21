@@ -1,6 +1,8 @@
 get '/questions' do
-  @user = User.find(session[:user_id])
   @questions = Question.all.order(created_at: :desc)
+  if logged_in?
+    @user = User.find(session[:user_id])
+  end
   erb :'questions/index'
 end
 
@@ -23,7 +25,8 @@ end
 
 get '/questions/:id' do
   @question = Question.find(params[:id])
-  # @question.update_attributes(total_views: += 1)
+  num = @question.total_views += 1
+  @question.update_attributes(total_views: num)
   @comments = @question.comments
   @answers = @question.answers
   @tags = @question.tags

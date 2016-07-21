@@ -14,7 +14,7 @@
   <div id="title"><strong><%=@question.title%></strong><br><span><a href="/users/<%=@question.user.id%>">  <%=@question.user.username%></a></span></div>
   <div><%=@question.body%></div>
   <%if @question.updated_at != @question.created_at%>
-    <div>Edited: <%=@question.updated_at%></div>
+    <div>Edited: <%=@question.edited_at%></div>
   <%else%>
     <div>Created: <%=@question.created_at%></div>
   <%end%>
@@ -29,13 +29,20 @@
 <span><a href="/questions/<%=@question.id%>/answers/new">Answer this Question</a></span>
 <span><a href="/questions/<%=@question.id%>/comments/new">Leave a Comment</a></span>
 <%end%>
+<%if logged_in? && current_user == @question.user%>
+<span><a href="/questions/<%=@question.id%>/edit">Edit Question</a></span>
+<form action="/questions/<%=@question.id%>%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Question"><br>
+</form>
+<%end%>
 
   <div class="comment">
   <%@comments.each do |comment|%>
       <div><%=comment.body%></div>
       <div><a href="/users/<%=comment.user.id%>"><%=comment.user.username%></a></div>
       <%if comment.updated_at != comment.created_at%>
-        <div>Edited: <%=comment.updated_at%></div>
+        <div>Edited: <%=comment.edited_at%></div>
       <%else%>
         <div>Created: <%=comment.created_at%></div>
       <%end%>
@@ -60,7 +67,7 @@
       <div><%=answer.body%></div>
       <div><a href="/users/<%=answer.user.id%>"><%=answer.user.username%></a></div>
       <%if answer.updated_at != answer.created_at%>
-        <div>Edited: <%=answer.updated_at%></div>
+        <div>Edited: <%=answer.edited_at%></div>
       <%else%>
         <div>Created: <%=answer.created_at%></div>
       <%end%>
@@ -68,6 +75,13 @@
         <div><a href="/answers/<%=answer.id%>/bestanswer">Select As Best Answer</a></div>
       <%end%>
       <br>
+      <%if current_user == answer.user%>
+      <span><a href="/answers/<%=answer.id%>/edit">Edit Answer</a></span>
+      <form action="/answers/<%=answer.id%>%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Answer"><br>
+      </form>
+      <%end%>
       <%if logged_in?%>
       <span><a href="/answers/<%=answer.id%>/comments/new">Leave a Comment</a></span>
       <%end%>
@@ -76,7 +90,7 @@
           <div><%=comment.body%></div>
           <div><a href="/users/<%=comment.user.id%>"><%=comment.user.username%></a></div>
           <%if comment.updated_at != comment.created_at%>
-            <div>Edited: <%=comment.updated_at%></div>
+            <div>Edited: <%=comment.edited_at%></div>
           <%else%>
             <div>Created: <%=comment.created_at%></div>
           <%end%>
