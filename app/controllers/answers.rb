@@ -3,7 +3,11 @@ get '/questions/:q_id/answers/new' do
   #This is here to make sure user can't go directly to answer
   #question without associated question
   @errors = ["You will need to login in order to answer this question."] unless logged_in?
-  erb :'answers/new'
+   if request.xhr?
+  erb :'answers/new', layout: false
+  else
+    erb :'answers/new'
+  end
 end
 
 post '/questions/:q_id/answers' do
@@ -23,7 +27,11 @@ get '/answers/:id/edit' do
   @question = @answer.question
   @user = @answer.user
   halt(401, "You do not have permission to complete this action.") unless logged_in? && current_user == @user
+  if request.xhr?
+  erb :'answers/edit', layout: false
+else
   erb :'answers/edit'
+end
 end
 
 get '/answers/:id/bestanswer' do

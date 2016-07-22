@@ -1,11 +1,19 @@
 get '/questions/:id/comments/new' do
-  @question = Question.find(params[:id])
-  erb :'/comments/new'
+   @question = Question.find(params[:id])
+  if request.xhr?
+  erb :'/comments/new', layout: false
+else
+   erb :'/comments/new'
+end
 end
 
 get '/answers/:id/comments/new' do
   @answer = Answer.find(params[:id])
+ if request.xhr?
+  erb :'/comments/new', layout: false
+else
   erb :'/comments/new'
+  end
 end
 
 post '/questions/:id/comments' do
