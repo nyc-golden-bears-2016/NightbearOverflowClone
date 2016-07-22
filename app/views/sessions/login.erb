@@ -7,10 +7,23 @@
 </div>
 <% end %>
 
-<h2>Log in</h2>
-<form method="post" action='/sessions/login'>
-<h3>Username:</h3>
-<input type="text" name="user[username]" placeholder="Username"><br>
-<h3>Password:</h3>
-<input type="password" name= "user[password]" placeholder="Password"><br>
-<input type="submit" value="Login">
+<form class="stuff" method="post" action='/sessions/login'>
+  <div class="imgcontainer">
+    <img src=http://i.imgur.com/xOBqOo5.gif" alt="Avatar" class="avatar">
+  </div>
+	<h2>Login</h2>
+  <div class="container">
+    <br><label><b>Username</b></label><br>
+   <input type="text" name="user[username]" placeholder="Username"> 
+   <br> <label><b>Password</b></label><br>
+
+   <input type="password" name= "user[password]" placeholder="Password">   
+    <button type="submit">Login</button>
+    <input type="checkbox" checked="checked"> Remember me
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+  </div>
+</form>
+</body>
+</html>

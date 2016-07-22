@@ -36,33 +36,32 @@ $(document).ready(function() {
         $('.ajax_question').append(response);
     })
   })
-  // $('.lc').on('click', 'span', function(e){
-  // //   e.preventDefault();
-  // // $('#leave_comment').hide();
-  // //   var target = e.target
-  // //   $.ajax({
-  // //     url:$(target).attr('href'),
-  // //     method:'GET'
-  // //   })
-  // //   .done(function(response){
+  // $('.lc').click(function(e){
+  //   e.preventDefault();
+  //   var target = e.target
+  //   $.ajax({
+  //     url:$(target).attr('href'),
+  //     method:'get'
+  //   })
+  //   .done(function(response){
+  //     $('#leave_comment').hide();
+  //     $(target).append(response);
+  //   })
+  // })
 
-  // //     $(target).append(response);
-  // //   })
-  // // })
 
-
-  // //   $('.edits').on('click', 'span', function(e){
-  // //   $('#edit_link').remove();
-  // //   e.preventDefault();
-  // //   var target = e.target
-  // //   $.ajax({
-  // //     url:$(target).attr('href'),
-  // //     method:'GET'
-  // //   })
-  // //   .done(function(response){
-  // //     $(target).append(response);
-  // //   })
-  // // })
+  //   $('.edits').on('click', 'span', function(e){
+  //   $('#edit_link').remove();
+  //   e.preventDefault();
+  //   var target = e.target
+  //   $.ajax({
+  //     url:$(target).attr('href'),
+  //     method:'GET'
+  //   })
+  //   .done(function(response){
+  //     $(target).append(response);
+  //   })
+  // })
 })
  
 
