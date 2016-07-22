@@ -142,20 +142,11 @@ nav li form {
 }
 
 form {
-
-}
-
-button {
-  width: 100px;
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  background: #09C;
-  color: #fff;
-  font-family: Tahoma, Geneva, sans-serif;
-  height: 30px;
-  border-radius: 15px;
-  border: 1p solid #999;
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
+  border: 3px solid #6A5ACD;
+	color: #191970;
 }
 
 input.button:hover {
@@ -166,7 +157,6 @@ input.button:hover {
 textarea {
   width: 375px;
   height: 150px;
-  display: block;
 }
 
 textarea:focus, input:focus {

@@ -6,19 +6,20 @@
   <%end%>
 </div>
 <% end %>
-
+<br>
 <form action="/questions/<%=@question.id%>" method="post">
   <input type="hidden" name="_method" value="put">
-  <label>Title:</label>
-  <input type="text" name="question[title]" value= "<%=@question.title%>">
-  <label>Question:</label>
-  <textarea name="question[body]"><%=@question.body%></textarea>
-  <label>Add or Remove Tags:</label>
-  <input type="text" name="tags" value="<%=@tags%>">
-  <input type="submit" value="Edit Post"><br>
-</form>
+  <label>Title:</label><br>
+  <input type="text" name="question[title]" value= "<%=@question.title%>"><br><br>
+  <label>Question:</label><br>
+  <textarea name="question[body]"><%=@question.body%></textarea><br>
+  <label>Add or Remove Tags:</label><br>
+  <input type="text" name="tags" value="<%=@tags%>"><br><br>
+  <input type="submit" value="Edit Post">
+</form><br>
 
 <form action="/questions/<%=@question.id%>%>" method="post">
   <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Post"><br>
+  <input type="submit" value="Delete Post">
 </form>
+<br><br>
