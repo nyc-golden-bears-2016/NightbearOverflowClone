@@ -17,11 +17,6 @@
       <input type="submit" value="&#8671">
     </form>
   </div>
-    <%if @errors%>
-    <%@errors.each do |error| %>
-    <%=error %>
-    <% end %>
-    <% end %>
 <br>
   <div class="ajax_question">
   <div class="question">
@@ -97,13 +92,8 @@
       <%end%>
       <br>
       <%if logged_in? && current_user == answer.user%>
-      <span><a href="/answers/<%=answer.id%>/edit">Edit Answer</a></span>
-      <form action="/answers/<%=answer.id%>" method="post">
-      <%if current_user == answer.user%>
-      <div class="edits">
       <span><a id="edit_link" href="/answers/<%=answer.id%>/edit">Edit Answer</a></span>
-      </div>
-      <form action="/answers/<%=answer.id%>%>" method="post">
+      <form action="/answers/<%=answer.id%>" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete Answer"><br>
       </form>
