@@ -23,6 +23,7 @@
     <% end %>
     <% end %>
 <br>
+  <div class="ajax_question">
   <div class="question">
   <div id="title"><strong><%=@question.title%></strong><br><span><a href="/users/<%=@question.user.id%>">  <%=@question.user.username%></a></span></div>
   <div><%=@question.body%></div>
@@ -32,6 +33,7 @@
     <div>Created: <%=@question.created_at%></div>
   <%end%>
 </div>
+</div>
 <div class="tags">
 <%@question.tags.each do |tag|%>
 <span><a href="/tags/<%=tag.id%>"><%=tag.subject%></a></span>
@@ -39,8 +41,12 @@
 </div>
 <br>
 <%if logged_in?%>
-<span><a href="/questions/<%=@question.id%>/answers/new">Answer this Question</a></span>
-<span><a href="/questions/<%=@question.id%>/comments/new">Leave a Comment</a></span>
+<div class ='answer_question'>
+<span><a id='answers_link' href="/questions/<%=@question.id%>/answers/new">Answer this Question</a></span>
+</div>
+<div class = 'comment_question'>
+<span><a id="comment_link" href="/questions/<%=@question.id%>/comments/new">Leave a Comment</a></span>
+</div>
 <%end%>
 <%if logged_in? && current_user == @question.user%>
 <span><a href="/questions/<%=@question.id%>/edit">Edit Question</a></span>
@@ -93,14 +99,21 @@
       <%if logged_in? && current_user == answer.user%>
       <span><a href="/answers/<%=answer.id%>/edit">Edit Answer</a></span>
       <form action="/answers/<%=answer.id%>" method="post">
+      <%if current_user == answer.user%>
+      <div class="edits">
+      <span><a id="edit_link" href="/answers/<%=answer.id%>/edit">Edit Answer</a></span>
+      </div>
+      <form action="/answers/<%=answer.id%>%>" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete Answer"><br>
       </form>
       <%end%>
       </div>
       <%if logged_in?%>
-      <span><a href="/answers/<%=answer.id%>/comments/new">Leave a Comment</a></span>
+      <div class='lc'>
+      <span><a id='leave_comment' href="/answers/<%=answer.id%>/comments/new">Leave a Comment</a></span>
       <%end%>
+      </div>
       <h5 class='comment-header'>Comments:<h5>
       <div class="comment">
       <%answer.comments.each do |comment|%>

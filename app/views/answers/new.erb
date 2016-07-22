@@ -1,3 +1,4 @@
+
 <% if @errors %>
 <div class="errors">
   <label>ERRORS:</label><br>
@@ -6,8 +7,14 @@
   <%end%>
 </div>
 <% end %>
+<%if @errors %>
+  <%=erb :_errors%>
+<%end%>
+
+<div class="answer_container">
 <form action="/questions/<%=@question.id%>/answers" method="post">
   <label>Body:</label>
   <textarea name="answer[body]"></textarea>
   <input type="submit" value="Submit Answer"><br>
 </form>
+</div>
