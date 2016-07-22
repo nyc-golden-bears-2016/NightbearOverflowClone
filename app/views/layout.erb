@@ -19,6 +19,7 @@
 </head>
 <nav class="hidenav">
   <%if logged_in?%>
+    <li><a>Hello, <%=current_user.username%>! </a></li>
     <li><a href= '/'>Main</a></li>
     <li><a href='/questions/new'>Ask A Question</a></li>
     <li><a href='/users/<%=current_user.id%>'>Your Account</a></li>

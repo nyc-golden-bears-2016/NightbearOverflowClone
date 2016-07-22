@@ -12,7 +12,7 @@
     <form id="upvote" action="/<%=@question.id%>/upvote" method="post">
       <input type="submit" value="&#8670">
     </form>
-    <span> <%=@question.total_votes%></span>
+    <span><%=@question.total_votes%></span>
     <form id="downvote" action="/<%=@question.id%>/downvote" method="post">
       <input type="submit" value="&#8671">
     </form>
@@ -37,18 +37,18 @@
 <br>
 <%if logged_in?%>
 <div class ='answer_question'>
-<span><a id='answers_link' href="/questions/<%=@question.id%>/answers/new">Answer this Question</a></span>
+<span><br><a id='answers_link' href="/questions/<%=@question.id%>/answers/new">Answer this Question</a></span>
 </div>
 <div class = 'comment_question'>
 <span><a id="comment_link" href="/questions/<%=@question.id%>/comments/new">Leave a Comment</a></span>
-</div>
+</div><br>
 <%end%>
 <%if logged_in? && current_user == @question.user%>
-<span><a href="/questions/<%=@question.id%>/edit">Edit Question</a></span>
+<span><a href="/questions/<%=@question.id%>/edit">Edit Question</a></span><br>
 <form action="/questions/<%=@question.id%>" method="post">
   <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Question"><br>
-</form>
+  <input type="submit" value="Delete Question">
+</form><br><br>
 <%end%>
 <h5 class='comment-header'>Comments:<h5>
   <div class="comment">
@@ -92,11 +92,11 @@
       <%end%>
       <br>
       <%if logged_in? && current_user == answer.user%>
-      <span><a id="edit_link" href="/answers/<%=answer.id%>/edit">Edit Answer</a></span>
+      <span><a id="edit_link" href="/answers/<%=answer.id%>/edit">Edit Answer</a></span><br>
       <form action="/answers/<%=answer.id%>" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete Answer"><br>
-      </form>
+      </form><br>
       <%end%>
       </div>
       <%if logged_in?%>

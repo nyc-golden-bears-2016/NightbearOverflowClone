@@ -11,10 +11,11 @@
   <%=erb :_errors%>
 <%end%>
 
-<div class="answer_container">
+<br><br><div class="answer_container">
 <form action="/questions/<%=@question.id%>/answers" method="post">
-  <label>Body:</label>
-  <textarea name="answer[body]"></textarea>
-  <input type="submit" value="Submit Answer"><br>
+  <label>Body:</label><br>
+  <textarea name="answer[body]"></textarea><br>
+  <input type="submit" value="Submit Answer">
 </form>
 </div>
+<br><br>
