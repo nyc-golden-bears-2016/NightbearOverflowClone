@@ -60,5 +60,5 @@ delete '/questions/:id' do
   @user = @question.user
   halt(401, "You do not have permission to complete this action.") unless logged_in? && current_user == @user
   @question.destroy
-  erb :'questions/index'
+  redirect '/'
 end

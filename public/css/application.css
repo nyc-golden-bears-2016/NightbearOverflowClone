@@ -140,3 +140,35 @@ nav li form {
 .voting span {
 	padding-left: 8px;
 }
+
+form {
+
+}
+
+button {
+  width: 100px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background: #09C;
+  color: #fff;
+  font-family: Tahoma, Geneva, sans-serif;
+  height: 30px;
+  border-radius: 15px;
+  border: 1p solid #999;
+}
+
+input.button:hover {
+  background: #fff;
+  color: #09C;
+}
+
+textarea {
+  width: 375px;
+  height: 150px;
+  display: block;
+}
+
+textarea:focus, input:focus {
+  border: 1px solid #09C;
+}

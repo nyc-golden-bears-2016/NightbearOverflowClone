@@ -3,12 +3,12 @@
 <h4>Active Threads: </h4>
 <% if @questions %>
   <% @questions.each do |question| %>
-    Subject: <a href='questions/<%= question.id %>'><%= question.title %></a> |
+    Subject: <a href='/questions/<%= question.id %>'><%= question.title %></a> |
     Votes: <%= question.votes.length %> |
     Answers: <%= question.answers.length %> |
     Views: <%= question.total_views %> |
     Tags: <% question.tags.each do |tag| %>
-      <div id='tags'><a href='tags/<%= tag.id %>'><%= tag.subject %></a></div>
+      <div id='tags'><a href='/tags/<%= tag.id %>'><%= tag.subject %></a></div>
     <% end %>
   <% end %>
-<% end %> 
+<% end %>
