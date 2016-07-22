@@ -44,7 +44,9 @@
 </div><br>
 <%end%>
 <%if logged_in? && current_user == @question.user%>
-<span><a href="/questions/<%=@question.id%>/edit">Edit Question</a></span><br>
+<div class="edit_question">
+<span><a id="edit_link" href="/questions/<%=@question.id%>/edit">Edit Question</a></span>
+</div>
 <form action="/questions/<%=@question.id%>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Question">

@@ -209,8 +209,10 @@ span.psw {
 .comment_question{text-align: 
 	center;
 }
-
-#leave_comment{margin-left: 500px;}
+.edit_question{text-align: 
+	center;
+}
+.lc{float: center;}
 
 #leave_comment:link, #leave_comment:visited {
     background-color: #3A5ACD;
@@ -257,5 +259,21 @@ span.psw {
 
 
 #comment_link:hover, #comment_link:active {
+    background-color: #6A5ACD;
+}
+
+#edit_link:link, #edit_link:visited {
+    background-color: #3A5ACD;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid #6A5ACD;
+	border-radius: 10px;
+}
+
+
+#edit_link:hover, #cedit_link:active {
     background-color: #6A5ACD;
 }
